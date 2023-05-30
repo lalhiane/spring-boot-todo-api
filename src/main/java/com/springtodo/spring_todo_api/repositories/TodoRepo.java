@@ -12,4 +12,6 @@ public interface TodoRepo extends JpaRepository<Todo, Integer> {
 
     List<Todo> findByUserId(Integer userId);
 
+    boolean existsByTitleAndUserId(String title, Integer UserId);
+
 }

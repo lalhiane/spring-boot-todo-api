@@ -66,32 +66,7 @@ public class TodoService {
 
     public Todo addNew(Todo todo) {
 
-        // if (!todoRepo.existsByTitle(todo.getTitle())) {
-
-        // return todoRepo.save(todo);
-
-        // } else {
-
-        // throw new ConflictException(String.format("Todo With Title '%s' Is Already
-        // Exists!", todo.getTitle()));
-
-        // }
-
-        boolean flag = false;
-
-        for (Todo t : findByUserId(todo.getUserId())) {
-
-            if (t.getTitle().equals(todo.getTitle())) {
-
-                flag = true;
-
-                break;
-
-            }
-
-        }
-
-        if (!flag) {
+        if (!todoRepo.existsByTitleAndUserId(todo.getTitle(), todo.getUserId())) {
 
             return todoRepo.save(todo);
 
